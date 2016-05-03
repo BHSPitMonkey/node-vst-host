@@ -25,17 +25,20 @@ var NodeVSTHost = function() {
 
 //////////////////////////////////////////////////////////////////////////
 // Process some audio with some plugins
-NodeVSTHost.prototype.processAudio = function( inputFile, outputFile, pluginNames, preset ) {
+NodeVSTHost.prototype.processAudio = function( inputFile, outputFile, pluginNames ) {
 	// MrsWatson wants our plugin names in a more compact string
 	var strPluginNames = "";
-	for( iPlugin in pluginNames ) {
-		strPluginNames += pluginNames[iPlugin];
+	for( var i = 0; i < pluginNames.length; i++ ) {
+		strPluginNames += pluginNames[i].name;
 
-		if( iPlugin != pluginNames.length - 1 )
+		//if obj has value for preset, add , then preset
+		if(pluginNames[i].preset)
+			strPluginNames += (","+pluginNames[i].preset);
+
+		//if not the last vst, add a ; before next vst
+		if( i != pluginNames.length - 1 )
 			strPluginNames += ";";
 	}
-	if(preset)
-		strPluginNames += (","+preset);
 
 	commandArgs = [ 
 		"--input", inputFile,
