@@ -25,7 +25,7 @@ var NodeVSTHost = function() {
 
 //////////////////////////////////////////////////////////////////////////
 // Process some audio with some plugins
-NodeVSTHost.prototype.processAudio = function( inputFile, outputFile, pluginNames ) {
+NodeVSTHost.prototype.processAudio = function( inputFile, outputFile, pluginNames, goodCB, errCB ) {
 	// MrsWatson wants our plugin names in a more compact string
 	var strPluginNames = "";
 	for( var i = 0; i < pluginNames.length; i++ ) {
@@ -50,6 +50,7 @@ NodeVSTHost.prototype.processAudio = function( inputFile, outputFile, pluginName
 
 	runWatsonCommand( commandArgs, function(results) {
 		console.log( results );
+		goodCB();
 	});
 } // end NodeVSTHost.processAudio()
 
