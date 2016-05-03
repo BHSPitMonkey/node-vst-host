@@ -68,8 +68,8 @@ NodeVSTHost.prototype.listPlugins = function( callback ) {
 			locations = [];
 
 		// Remove the characters that aren't part of the name
-		for( var iLine in lines ) {
-			var thisLine = lines[iLine];
+		for( var j = 0; j < lines.length; j++ ) {
+			var thisLine = lines[j];
 
 			// If this is just a line telling us that we don't have any
 			// plugins here, skip it
