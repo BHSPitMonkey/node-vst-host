@@ -111,7 +111,7 @@ function runCommand( command, args, end ) {
 
 
 function runWatsonCommand( arguments, onFinished ) {
-	var cmdPath = __dirname + "/MrsWatson/bin/" + process.platform + "/mrswatson.exe";
+	var cmdPath = __dirname + "/MrsWatson/bin/" + process.platform + "/mrswatson";
 
 	var foo = new runCommand(
 	    cmdPath, 
